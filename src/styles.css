@@ -394,4 +394,38 @@ input[type="checkbox"] {
     cursor: pointer;
     color:#ddd;
   }
+ /* Breadcrumb Container */
+ .breadcrumb {
+    display: flex;
+    align-items: center; /* Keeps elements in a single line */
+    gap: 5px; /* Adjust spacing */
+    font-size: 14px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    position: relative;
+    top: -8px; /* Moves the breadcrumb slightly up */
+}
+
+  
+  /* Clock Icon Styling */
+  .breadcrumb-icon {
+    color: #6b7280; /* Gray color */
+    font-size: 16px;
+  }
+  
+  /* Analytics (Gray) */
+  .analytics-text {
+    color: #6b7280; /* Gray color */
+  }
+  
+  /* Separator (Arrow) */
+  .breadcrumb-separator {
+    color: #6b7280;
+  }
+  
+  /* Members (Black) */
+  .members-text {
+    color: #000000; /* Black color */
+    font-weight: bold;
+  }
+  
   

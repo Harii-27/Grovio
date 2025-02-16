@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../styles.css";
-import { FaDownload, FaEyeSlash, FaFilter, FaBuilding, FaTimes, FaCheck,FaCalendarAlt, FaChevronDown, FaWhatsapp  } from "react-icons/fa";
+import { FaDownload, FaEyeSlash, FaFilter, FaBuilding, FaTimes, FaCheck,FaCalendarAlt, FaChevronDown, FaWhatsapp, FaClock  } from "react-icons/fa";
 
 type Member = {
   name: string;
@@ -57,6 +57,11 @@ const MembersTable: React.FC = () => {
 
   return (
     <div className="members-container">
+       <span className="breadcrumb">
+        <FaClock className="breadcrumb-icon" />
+        <span className="analytics-text">Analytics</span> <span className="breadcrumb-separator"> &gt; </span> 
+        <span className="members-text">Members</span>
+      </span>
       {/* **Members Input Box** */}
       <div className="members-filter-container">
       {/* Left Side: "Members" Text */}
