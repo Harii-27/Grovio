@@ -1,0 +1,112 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Table Container */
+  .table-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+  }
+  
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  
+  thead {
+    background: #f1f3f5;
+  }
+  
+  thead th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s ease;
+  }
+  
+  tbody tr:hover {
+    background: #f9fafb;
+  }
+  
+  td {
+    padding: 15px;
+    color: #555;
+    text-align: left;
+  }
+  
+  /* Checkbox */
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
+  /* Badge Styles */
+  .badge {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 12px;
+  }
+  
+  .badge-blue {
+    background: #e7f3ff;
+    color: #007bff;
+  }
+  
+  .badge-red {
+    background: #fde8e8;
+    color: #ff4d4f;
+  }
+  
+  .badge-green {
+    background: #e6ffed;
+    color: #28a745;
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 14px;
+  }
+  
+  .pagination select {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .pagination button {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    background: #f1f3f5;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background: #e9ecef;
+  }
+  

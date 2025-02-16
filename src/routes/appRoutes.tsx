@@ -42,9 +42,9 @@ const appRoutes: RouteType[] = [
         state: "dashboard.index"
       },
       {
-        path: "/dashboard/default",
+        path: "/dashboard/members",
         element: <MembersTable/>,
-        state: "dashboard.default",
+        state: "dashboard.members",
         sidebarProps: { displayText: "Members" }
       },
       {
