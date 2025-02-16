@@ -1,6 +1,5 @@
 import DashboardPageLayout from "../pages/dashboard/DashboardPageLayout";
 import { RouteType } from "./config";
-import DefaultPage from "../pages/dashboard/DefaultPage";
 import DashboardIndex from "../pages/dashboard/DashboardIndex";
 import ChangelogPage from "../pages/changelog/ChangelogPage";
 import AnalyticsPage from "../pages/dashboard/AnalyticsPage";
@@ -16,6 +15,7 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import MembersPage from "../pages/dashboard/DefaultPage";
 
 const appRoutes: RouteType[] = [
   {
@@ -43,7 +43,7 @@ const appRoutes: RouteType[] = [
       },
       {
         path: "/dashboard/default",
-        element: <DefaultPage />,
+        element: <MembersPage/>,
         state: "dashboard.default",
         sidebarProps: { displayText: "Members" }
       },
