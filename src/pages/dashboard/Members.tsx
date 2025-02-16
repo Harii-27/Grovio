@@ -60,68 +60,70 @@ const MembersTable: React.FC = () => {
   return (
     <div className="table-container">
       <h2>Members List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <input type="checkbox" />
-            </th>
-            <th onClick={() => handleSort("name")}>
-              Name {getSortIcon("name")}
-            </th>
-            <th onClick={() => handleSort("activity")}>
-              Activity {getSortIcon("activity")}
-            </th>
-            <th onClick={() => handleSort("lastActive")}>
-              Last Active {getSortIcon("lastActive")}
-            </th>
-            <th onClick={() => handleSort("location")}>
-              Location {getSortIcon("location")}
-            </th>
-            <th onClick={() => handleSort("primaryMail")}>
-              Primary Email {getSortIcon("primaryMail")}
-            </th>
-            <th>Tags</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentRows.map((member, index) => (
-            <tr key={index}>
-              <td>
+      <div className="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>
                 <input type="checkbox" />
-              </td>
-              <td className="name-column">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="profile-img"
-                />
-                {member.name}
-              </td>
-              <td>{member.activity}</td>
-              <td>{member.lastActive}</td> {/* Dynamic lastActive value */}
-              <td>{member.location}</td>
-              <td>
-                <a href={`mailto:${member.primaryMail}`}>
-                  {member.primaryMail}
-                </a>
-              </td>
-              <td>
-                {member.tags.map((tag, i) => (
-                  <span
-                  key={i}
-                  className={`badge ${
-                    i % 3 === 0 ? "badge-purple" : i % 3 === 1 ? "badge-red" : "badge-green"
-                  }`}
-                >
-                  {tag}
-                </span>
-                ))}
-              </td>
+              </th>
+              <th onClick={() => handleSort("name")}>
+                Name {getSortIcon("name")}
+              </th>
+              <th onClick={() => handleSort("activity")}>
+                Activity {getSortIcon("activity")}
+              </th>
+              <th onClick={() => handleSort("lastActive")}>
+                Last Active {getSortIcon("lastActive")}
+              </th>
+              <th onClick={() => handleSort("location")}>
+                Location {getSortIcon("location")}
+              </th>
+              <th onClick={() => handleSort("primaryMail")}>
+                Primary Email {getSortIcon("primaryMail")}
+              </th>
+              <th>Tags</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {currentRows.map((member, index) => (
+              <tr key={index}>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td className="name-column">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="profile-img"
+                  />
+                  {member.name}
+                </td>
+                <td>{member.activity}</td>
+                <td>{member.lastActive}</td>
+                <td>{member.location}</td>
+                <td>
+                  <a href={`mailto:${member.primaryMail}`}>
+                    {member.primaryMail}
+                  </a>
+                </td>
+                <td>
+                  {member.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className={`badge ${i % 3 === 0 ? "badge-purple" : i % 3 === 1 ? "badge-red" : "badge-green"
+                        }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
 
       {/* Pagination & Rows per Page */}
       <div className="pagination-container">
@@ -140,11 +142,7 @@ const MembersTable: React.FC = () => {
                     setShowDropdown(false);
                   }}
                 >
-                  <input
-                    type="checkbox"
-                    checked={num === rowsPerPage}
-                    readOnly
-                  />
+                  <input type="checkbox" checked={num === rowsPerPage} readOnly />
                   {num} per page
                 </li>
               ))}
@@ -153,13 +151,10 @@ const MembersTable: React.FC = () => {
         </div>
 
         <div className="pagination">
-          {/* Pagination Info */}
           <span>
-            {indexOfFirstRow + 1}-{Math.min(indexOfLastRow, members.length)} of{" "}
-            {members.length}
+            {indexOfFirstRow + 1}-{Math.min(indexOfLastRow, members.length)} of {members.length}
           </span>
 
-          {/* Previous Button */}
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
@@ -167,7 +162,6 @@ const MembersTable: React.FC = () => {
             &lt;
           </button>
 
-          {/* Next Button */}
           <button
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}

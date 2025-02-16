@@ -4,10 +4,10 @@ body {
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-  }
-  
-  /* Table Container */
-  .table-container {
+}
+
+/* Table Container */
+.table-container {
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
@@ -16,21 +16,34 @@ body {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 20px;
-  }
-  
-  /* Table */
-  table {
+}
+
+/* Scrollable Table Wrapper */
+.table-wrapper {
+    max-height: 500px; /* Adjusted height for better scrolling */
+    overflow-x: auto;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+
+/* Table */
+table {
     width: 100%;
     border-collapse: collapse;
     background: white;
-  }
-  
-  thead {
+    white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* Sticky Header */
+thead {
     background: #f1f3f5;
-  }
-  
-  thead th {
-    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+thead th {
+    padding: 10px 12px; /* Reduced padding */
     text-align: left;
     font-weight: bold;
     color: #333;
@@ -38,95 +51,96 @@ body {
     cursor: pointer;
     position: relative;
     transition: background 0.2s ease;
-  }
-  
-  thead th::after {
+    font-size: 14px;
+}
+
+thead th::after {
     content: " ▼"; /* Down arrow */
     font-size: 12px;
     color: #777;
     margin-left: 5px;
-  }
-  
-  tbody tr {
+}
+
+/* Table Row Styling */
+tbody tr {
     border-bottom: 1px solid #ddd;
     transition: background 0.3s ease;
-  }
-  
-  tbody tr:hover {
+}
+
+tbody tr:hover {
     background: #f9fafb;
-  }
-  
-  td {
-    padding: 15px;
+}
+
+td {
+    padding: 10px 12px; /* Reduced padding */
     color: #555;
     text-align: left;
-  }
-  
-  /* Checkbox */
-  input[type="checkbox"] {
+    font-size: 14px; /* Reduced font size */
+}
+
+/* Checkbox */
+input[type="checkbox"] {
     width: 16px;
     height: 16px;
     cursor: pointer;
-  }
-  
-  /* Name Column */
-  .name-column {
+}
+
+/* Name Column */
+.name-column {
     display: flex;
     align-items: center;
-    gap: 10px;
-  }
-  
-  .profile-img {
-    width: 35px;
-    height: 35px;
+    gap: 8px;
+}
+
+.profile-img {
+    width: 28px;  /* Adjusted profile image size */
+    height: 28px;
     border-radius: 50%;
-  }
-  
-  /* Badge Styles */
-  .badge {
+}
+
+/* Badge Styles */
+.badge {
     display: inline-block;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 14px;
+    padding: 3px 8px; /* Reduced padding */
+    border-radius: 10px;
+    font-size: 12px; /* Reduced font size */
     font-weight: 500;
     text-align: center;
     margin: 2px;
     border: 1px solid;
-  }
-  
-  .badge-purple {
+}
+
+.badge-purple {
     color: #7d5fff;
     border-color: #7d5fff;
     background-color: rgba(125, 95, 255, 0.1);
-  }
-  
-  .badge-red {
-    color: #FF9A9A;  /* Light Red */
+}
+
+.badge-red {
+    color: #FF9A9A;
     border-color: #FF9A9A;
     background-color: rgba(255, 154, 154, 0.1);
-  }
-  
-  
-  .badge-green {
-    color: #50E3C2;
+}
+
+.badge-green {
     color: #50E3C2;
     background-color: rgba(80, 227, 194, 0.1);
-  }
-  
+}
+
 /* Dropdown Container */
 .rows-per-page {
     position: relative;
     cursor: pointer;
     padding: 5px 10px;
-    border: 1px solid #d1d5db; /* Light gray border */
+    border: 1px solid #d1d5db;
     border-radius: 5px;
     background: white;
     margin-right: 15px;
     font-size: 14px;
-  }
-  
-  /* Dropdown List */
-  .rows-per-page ul {
+}
+
+/* Dropdown List */
+.rows-per-page ul {
     position: absolute;
     list-style: none;
     background: white;
@@ -138,97 +152,96 @@ body {
     left: 0;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
-  }
-  
-  /* Dropdown Item */
-  .rows-per-page ul li {
+}
+
+/* Dropdown Item */
+.rows-per-page ul li {
     display: flex;
     align-items: center;
-    padding: 8px 12px;
+    padding: 6px 10px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     text-align: left;
     transition: background 0.2s ease-in-out;
-  }
-  
-  /* Checkbox Styling */
-  .rows-per-page ul li input[type="checkbox"] {
+}
+
+/* Checkbox Styling */
+.rows-per-page ul li input[type="checkbox"] {
     margin-right: 8px;
     appearance: none;
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     border: 2px solid #ccc;
     border-radius: 4px;
     position: relative;
     cursor: pointer;
-  }
-  
-  /* Checkbox Checked State */
-  .rows-per-page ul li input[type="checkbox"]:checked {
+}
+
+/* Checkbox Checked State */
+.rows-per-page ul li input[type="checkbox"]:checked {
     background-color: #7a5af8;
     border: 2px solid #7a5af8;
-  }
-  
-  .rows-per-page ul li input[type="checkbox"]:checked::before {
+}
+
+.rows-per-page ul li input[type="checkbox"]:checked::before {
     content: "✔";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 12px;
+    font-size: 10px;
     color: white;
-  }
-  
-  /* Hover Effect */
-  .rows-per-page ul li:hover {
+}
+
+/* Hover Effect */
+.rows-per-page ul li:hover {
     background: #f3ebff;
-  }
-  
-  /* Active Selection (Purple Background) */
-  .rows-per-page ul li.active {
+}
+
+/* Active Selection */
+.rows-per-page ul li.active {
     background: #e6d6ff;
     font-weight: bold;
-  }
-  
-  .pagination-container {
+}
+
+/* Pagination */
+.pagination-container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-top: 10px;
     gap: 10px;
-  }
-  
-  .pagination {
+}
+
+.pagination {
     display: flex;
     align-items: center;
     gap: 8px;
-  }
-  
-  .pagination span {
-    font-size: 14px;
+}
+
+.pagination span {
+    font-size: 13px;
     color: #555;
-  }
-  
-  .pagination button {
-    border: 1px solid #d1d5db; /* Light gray border */
+}
+
+.pagination button {
+    border: 1px solid #d1d5db;
     background: none;
     color: #555;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 5px 8px;
     border-radius: 6px;
     transition: all 0.3s ease-in-out;
-  }
-  
-  .pagination button:hover {
-    border-color: #6a5acd; /* Soft purple border */
+}
+
+.pagination button:hover {
+    border-color: #6a5acd;
     color: #6a5acd;
-  }
-  
-  .pagination button:disabled {
+}
+
+.pagination button:disabled {
     color: #ccc;
     border-color: #ccc;
     cursor: not-allowed;
-  }
-  
-  
+}
