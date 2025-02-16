@@ -31,10 +31,10 @@ const Topbar = () => {
         <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}>
           <TextField
             variant="outlined"
-            sx={{ width: "500px", textAlign: "center" }} // Decreased width for better centering
+            sx={{ width: "500px", textAlign: "center",}} // Decreased width for better centering
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start" sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                <InputAdornment position="start" sx={{ display: "flex", alignItems: "center", gap: "5px",  position:"relative", left:"150px"}}>
                   <LockOutlined fontSize="small" />
                   <Box sx={{ fontSize: "14px", fontWeight: "bold", transform: "translateY(1px)" }}>
                     grovio.xyz
