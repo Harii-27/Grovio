@@ -282,49 +282,62 @@ input[type="checkbox"] {
 /* Individual button styles */
 .actions-btn {
     background: #ffffff;
+    border: 0.5px solid #ddd;
 }
 
 .export-btn {
     background: #ffffff;
+    border: 0.5px solid #ddd;
 
 }
 .add-filter-btn,
 .industry-btn {
     background: #ffffff;
+    border: 0.5px solid #ddd;
 }
 .filter-btn{
     color: #6a5acd; 
     background: #ffffff;
+    border: 0.5px solid #ddd;
 
 }
 
 .hide-fields-btn , saved-btn{
     background: #ffffff;
     margin-left: auto; /* Push to right */
+    border: 0.5px solid #ddd;
 }
 .saved-btn {
     background: #ffffff;
     margin-left: auto;
+    border: 0.5px solid #ddd;
   }
-
-  .members-filter-container {
+/* Main Container */
+.members-filter-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border: 0.5px solid #e0e0e0;
+    border-radius: 15px;
     padding: 10px;
     width: 100%;
+    height: 60px;
   }
   
-  /* Members Input */
-  .members-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    outline: none;
+  /* "Members" text aligned to the left */
+  .members-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Right Section: Contains filter, WhatsApp, and download button */
+  .filter-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between items */
   }
   
   /* Last 12 Days Filter */
@@ -333,13 +346,14 @@ input[type="checkbox"] {
     align-items: center;
     gap: 6px;
     padding: 8px 12px;
-    border: 1px solid #e0e0e0;
+    border: 0.5px solid #e0e0e0;
     border-radius: 8px;
     cursor: pointer;
   }
   
+  /* Calendar Icon */
   .filter-icon {
-    color: #6b7280;
+    color: #ddd;
   }
   
   /* WhatsApp Button */
@@ -347,32 +361,37 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     gap: 6px;
-    background-color: #e0f7e9;
-    color: #25d366;
+    background-color: #fff;
     padding: 8px 12px;
-    border: 1px solid #25d366;
+    border: 0.5px solid #ddd;
     border-radius: 8px;
   }
   
+  /* Make only the WhatsApp icon green */
+  .whatsapp-icon {
+    color: #008000; /* Green color */
+    font-size: 20px;
+  }
+  
+  
+  /* WhatsApp Icon */
   .whatsapp-icon {
     font-size: 16px;
   }
   
-  .close-icon {
-    color: #6b7280;
+  /* Close Icon */
+  .icon {
+    color: #ddd;
     cursor: pointer;
   }
   
   /* Download Button */
   .download-button {
     padding: 8px;
-    border: 1px solid #e0e0e0;
+    border: 0.5px solid #ddd;
     border-radius: 8px;
-    background-color: white;
+    background-color: #fff;
     cursor: pointer;
-  }
-  
-  .download-button:hover {
-    background-color: #f0f0f0;
+    color:#ddd;
   }
   

@@ -59,27 +59,31 @@ const MembersTable: React.FC = () => {
     <div className="members-container">
       {/* **Members Input Box** */}
       <div className="members-filter-container">
+      {/* Left Side: "Members" Text */}
       <span className="members-text">Members</span>
 
-      {/* Last 12 Days Filter */}
-      <div className="filter-dropdown">
-        <FaCalendarAlt className="filter-icon" />
-        <span>Last 12 Days</span>
-        <FaChevronDown className="filter-icon" />
-      </div>
+      {/* Right Side: Filters and Buttons */}
+      <div className="filter-buttons">
+        {/* Last 12 Days Filter */}
+        <div className="filter-dropdown">
+          <FaCalendarAlt className="filter-icon" />
+          <span>Last 12 Days</span>
+          <FaChevronDown className="filter-icon" />
+        </div>
 
-      {/* WhatsApp Button */}
-      <div className="whatsapp-button">
-        <FaWhatsapp className="whatsapp-icon" />
-        <span>WhatsApp</span>
-        <FaTimes className="close-icon" />
-      </div>
+        {/* WhatsApp Button */}
+        <div className="whatsapp-button">
+          <FaWhatsapp className="whatsapp-icon" />
+          <span>WhatsApp</span>
+          <FaTimes className="icon" />
+        </div>
 
-      {/* Download Button */}
-      <button className="download-button">
-        <FaDownload />
-      </button>
-    </div>
+        {/* Download Button */}
+        <button className="download-button">
+          <FaDownload />
+        </button>
+      </div>
+      </div>
 
       {/* **Table Container** */}
       <div className="table-container">
@@ -100,7 +104,8 @@ const MembersTable: React.FC = () => {
         </div>
 
         <div className="top-buttons">
-          <button className="btn actions-btn">Actions ▼</button>
+          <button className="btn actions-btn">Actions  
+            <FaChevronDown className="filter-icon" /></button>
           <button className="btn export-btn">
             <FaDownload className="icon" /> Export CSV
           </button>
