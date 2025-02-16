@@ -15,7 +15,7 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import MembersPage from "../pages/dashboard/DefaultPage";
+import MembersTable from "../pages/dashboard/Members";
 
 const appRoutes: RouteType[] = [
   {
@@ -43,7 +43,7 @@ const appRoutes: RouteType[] = [
       },
       {
         path: "/dashboard/default",
-        element: <MembersPage/>,
+        element: <MembersTable/>,
         state: "dashboard.default",
         sidebarProps: { displayText: "Members" }
       },
