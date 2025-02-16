@@ -1,37 +1,45 @@
-import { ListItemButton, ListItemIcon } from "@mui/material";
+import { Box, ListItemButton, ListItemIcon, Typography, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import { RouteType } from "../../routes/config";
 
 type Props = {
   item: RouteType;
+  isChild?: boolean; // ✅ Add isChild prop
 };
 
-const SidebarItem = ({ item }: Props) => {
+const SidebarItem = ({ item, isChild = false }: Props) => {
   return (
     item.sidebarProps && item.path ? (
       <ListItemButton
         component={Link}
         to={item.path}
         sx={{
-          backgroundColor: "transparent !important", // Removes background color
-          "&:hover": {
-            backgroundColor: "transparent !important" // Removes hover effect
-          },
-          "&.Mui-selected": {
-            backgroundColor: "transparent !important", // Removes active effect
-            color: "inherit"
-          },
-          "&.Mui-selected:hover": {
-            backgroundColor: "transparent !important" // Prevents hover on active item
-          },
+          backgroundColor: "transparent !important",
+          "&:hover": { backgroundColor: "transparent !important" },
+          "&.Mui-selected": { backgroundColor: "transparent !important", color: "inherit" },
+          "&.Mui-selected:hover": { backgroundColor: "transparent !important" },
           paddingY: "12px",
-          paddingX: "24px"
+          paddingLeft: isChild ? "35px" : "24px" // ✅ Shift child items slightly
         }}
       >
-        <ListItemIcon sx={{ color: "inherit" }}>
-          {item.sidebarProps.icon && item.sidebarProps.icon}
+        <ListItemIcon sx={{ color: "inherit", minWidth: isChild ? "30px" : "40px" }}>
+          {!isChild && item.sidebarProps.icon} {/* ✅ Hide icon for child items */}
         </ListItemIcon>
-        {item.sidebarProps.displayText}
+
+        {/* ✅ Use Stack to align dot & name properly */}
+        <Stack direction="row" alignItems="center" spacing={1}>
+          {isChild && ( // ✅ Purple dot for child items
+            <Box
+              sx={{
+                width: 6,
+                height: 6,
+                backgroundColor: "#33006F",
+                borderRadius: "50%"
+              }}
+            />
+          )}
+          <Typography>{item.sidebarProps.displayText}</Typography>
+        </Stack>
       </ListItemButton>
     ) : null
   );

@@ -11,10 +11,7 @@ import DocumentationPage from "../pages/documentation/DocumentationPage";
 
 // Importing matching icons
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
-import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
-import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import TopicOutlinedIcon from "@mui/icons-material/TopicOutlined";
+import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
@@ -36,7 +33,7 @@ const appRoutes: RouteType[] = [
     state: "dashboard",
     sidebarProps: {
       displayText: "Analytics",
-      icon: <AnalyticsOutlinedIcon />
+      icon: <AccessTimeOutlinedIcon />
     },
     child: [
       {
@@ -48,18 +45,14 @@ const appRoutes: RouteType[] = [
         path: "/dashboard/default",
         element: <DefaultPage />,
         state: "dashboard.default",
-        sidebarProps: {
-          displayText: "Members",
-          icon: <GroupOutlinedIcon />
-        },
+        sidebarProps: { displayText: "Members" }
       },
       {
         path: "/dashboard/analytics",
         element: <AnalyticsPage />,
         state: "dashboard.analytics",
         sidebarProps: {
-          displayText: "Messages",
-          icon: <ChatBubbleOutlineOutlinedIcon />
+          displayText: "Messages"
         }
       },
       {
@@ -67,8 +60,7 @@ const appRoutes: RouteType[] = [
         element: <SaasPage />,
         state: "dashboard.saas",
         sidebarProps: {
-          displayText: "Topics",
-          icon: <TopicOutlinedIcon />
+          displayText: "Topics"
         }
       }
     ]
@@ -80,7 +72,7 @@ const appRoutes: RouteType[] = [
     sidebarProps: {
       displayText: "Communities",
       icon: <GroupsOutlinedIcon />
-    },
+    }
   },
   {
     path: "/documentation",
@@ -110,5 +102,4 @@ const appRoutes: RouteType[] = [
     }
   }
 ];
-
 export default appRoutes;
