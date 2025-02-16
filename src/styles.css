@@ -12,10 +12,11 @@ body {
     max-width: 1200px;
     margin: 20px auto;
     background: #fff;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 20px;
+    border: 0.5px solid #ddd;
 }
 
 /* Scrollable Table Wrapper */
@@ -23,7 +24,8 @@ body {
     max-height: 500px; /* Adjusted height for better scrolling */
     overflow-x: auto;
     overflow-y: auto;
-    border: 1px solid #ddd;
+    border-radius: 22px;
+    border: 0.5px solid #ddd;
 }
 
 /* Table */
@@ -36,7 +38,7 @@ table {
 
 /* Sticky Header */
 thead {
-    background: #f1f3f5;
+    background: #fff ;
     position: sticky;
     top: 0;
     z-index: 2;
@@ -247,48 +249,60 @@ input[type="checkbox"] {
 }
 .top-buttons {
     display: flex;
+    align-items: center;
     gap: 10px;
     margin-bottom: 10px;
-  }
-  
-  .btn {
+    justify-content: space-between; /* Ensures spacing between buttons */
+    width: 100%;
+}
+
+.top-filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border-bottom: 0.5px solid #ddd; 
+    padding-bottom: 10px;
+}
+
+
+/* Button styles */
+.btn {
     background: #f5f5f5;
-    border: 1px solid #ddd;
+    border: 1px solid #aaa; 
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .actions-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Individual button styles */
+.actions-btn {
     background: #ffffff;
-  }
-  
-  .export-btn {
+}
+
+.export-btn {
     background: #ffffff;
 
-  }
-  
-  .hide-fields-btn {
+}
+.add-filter-btn,
+.industry-btn {
     background: #ffffff;
-  
+}
+.filter-btn{
+    color: #6a5acd; 
+    background: #ffffff;
+
+}
+
+.hide-fields-btn , saved-btn{
+    background: #ffffff;
+    margin-left: auto; /* Push to right */
+}
+.saved-btn {
+    background: #ffffff;
+    margin-left: auto;
   }
-  
-  .actions-menu {
-    position: absolute;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px;
-    list-style: none;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .actions-menu li {
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .actions-menu li:hover {
-    background: #f5f5f5;
-  }
-  

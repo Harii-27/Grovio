@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../styles.css";
-import { FaDownload, FaEye } from "react-icons/fa"; // Import icons
+import { FaDownload, FaEyeSlash, FaFilter, FaBuilding, FaTimes, FaCheck } from "react-icons/fa";
 
 type Member = {
   name: string;
@@ -19,7 +19,7 @@ const ianDooley: Member = {
   lastActive: "5th May",
   location: "New York, USA",
   primaryMail: "someone@grovio.xyz",
-  tags: ["Badge", "Badge", "Badge"],
+  tags: ["Badge", "Badge", "Badge", "+2"],
 };
 
 const sampleMembers: Member[] = Array(4585)
@@ -58,18 +58,29 @@ const MembersTable: React.FC = () => {
   return (
     <div className="table-container">
       {/* **Top Buttons (Actions, Export CSV, Hide Fields)** */}
+
+      <div className="top-filters">
+        <div className="actions-dropdown">
+          <button onClick={() => setShowActions(!showActions)} className="btn add-filter-btn">
+            <FaFilter className="icon" /> Add Filter
+          </button>
+        </div>
+        <button className="btn industry-btn">
+          <FaBuilding className="icon" /> Organization Industry
+        </button>
+        <button className="btn filter-btn">
+          <FaTimes className="icon" /> Filter Property
+        </button>
+        <button className="btn saved-btn">
+          <FaCheck className="icon" /> Saved Filters
+        </button>
+      </div>
+
       <div className="top-buttons">
         <div className="actions-dropdown">
           <button onClick={() => setShowActions(!showActions)} className="btn actions-btn">
             Actions ▼
           </button>
-          {showActions && (
-            <ul className="actions-menu">
-              <li>Delete</li>
-              <li>Edit</li>
-              <li>Assign to Team</li>
-            </ul>
-          )}
         </div>
         {/* Export CSV button with Download Icon */}
         <button className="btn export-btn">
@@ -78,7 +89,7 @@ const MembersTable: React.FC = () => {
 
         {/* Hide Fields button with Eye Icon */}
         <button className="btn hide-fields-btn">
-          <FaEye className="icon" /> Hide Fields
+          <FaEyeSlash className="icon" /> Hide Fields
         </button>
       </div>
 
@@ -110,9 +121,20 @@ const MembersTable: React.FC = () => {
                 <td>{member.primaryMail}</td>
                 <td>
                   {member.tags.map((tag, i) => (
-                    <span key={i} className={`badge ${i % 3 === 0 ? "badge-purple" : i % 3 === 1 ? "badge-red" : "badge-green"}`}>
-                      {tag}
-                    </span>
+                    <span
+                    key={i}
+                    className={`badge ${
+                      tag === "+2"
+                        ? "badge-gray"
+                        : i % 3 === 0
+                        ? "badge-purple"
+                        : i % 3 === 1
+                        ? "badge-red"
+                        : "badge-green"
+                    }`}
+                  >
+                    {tag}
+                  </span>
                   ))}
                 </td>
               </tr>
