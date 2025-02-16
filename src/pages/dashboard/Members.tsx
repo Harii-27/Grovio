@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../../styles.css";
-import { FaDownload, FaEyeSlash, FaFilter, FaBuilding, FaTimes, FaCheck,FaCalendarAlt, FaChevronDown, FaWhatsapp, FaClock  } from "react-icons/fa";
+import ian from "../../assets/images/ian.jpg";
+import { FaDownload, FaEyeSlash, FaFilter, FaBuilding, FaTimes, FaCheck, FaCalendarAlt, FaChevronDown, FaWhatsapp, FaClock } from "react-icons/fa";
+import { Avatar } from "@mui/material";
 
 type Member = {
   name: string;
@@ -36,7 +38,6 @@ const MembersTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [showDropdown, setShowDropdown] = useState(false);
-  // const [showActions, setShowActions] = useState(false);
 
   const handleSort = (column: keyof Member) => {
     const isAsc = sortColumn === column && sortOrder === "asc";
@@ -57,42 +58,38 @@ const MembersTable: React.FC = () => {
 
   return (
     <div className="members-container">
-       <span className="breadcrumb">
+      <span className="breadcrumb">
         <FaClock className="breadcrumb-icon" />
-        <span className="analytics-text">Analytics</span> <span className="breadcrumb-separator"> &gt; </span> 
+        <span className="analytics-text">Analytics</span> <span className="breadcrumb-separator"> &gt; </span>
         <span className="members-text">Members</span>
       </span>
       {/* **Members Input Box** */}
       <div className="members-filter-container">
-      {/* Left Side: "Members" Text */}
-      <span className="members-text">Members</span>
 
-      {/* Right Side: Filters and Buttons */}
-      <div className="filter-buttons">
-        {/* Last 12 Days Filter */}
-        <div className="filter-dropdown">
-          <FaCalendarAlt className="filter-icon" />
-          <span>Last 12 Days</span>
-          <FaChevronDown className="filter-icon" />
+        <span className="members-text">Members</span>
+
+        <div className="filter-buttons">
+          {/* Last 12 Days Filter */}
+          <div className="filter-dropdown">
+            <FaCalendarAlt className="filter-icon" />
+            <span>Last 12 Days</span>
+            <FaChevronDown className="filter-icon" />
+          </div>
+
+          <div className="whatsapp-button">
+            <FaWhatsapp className="whatsapp-icon" />
+            <span>WhatsApp</span>
+            <FaTimes className="icon" />
+          </div>
+
+          <button className="download-button">
+            <FaDownload />
+          </button>
         </div>
-
-        {/* WhatsApp Button */}
-        <div className="whatsapp-button">
-          <FaWhatsapp className="whatsapp-icon" />
-          <span>WhatsApp</span>
-          <FaTimes className="icon" />
-        </div>
-
-        {/* Download Button */}
-        <button className="download-button">
-          <FaDownload />
-        </button>
-      </div>
       </div>
 
       {/* **Table Container** */}
       <div className="table-container">
-        {/* **Top Filters and Actions** */}
         <div className="top-filters">
           <button className="btn add-filter-btn">
             <FaFilter className="icon" /> Add Filter
@@ -109,7 +106,7 @@ const MembersTable: React.FC = () => {
         </div>
 
         <div className="top-buttons">
-          <button className="btn actions-btn">Actions  
+          <button className="btn actions-btn">Actions
             <FaChevronDown className="filter-icon" /></button>
           <button className="btn export-btn">
             <FaDownload className="icon" /> Export CSV
@@ -138,7 +135,7 @@ const MembersTable: React.FC = () => {
                 <tr key={index}>
                   <td><input type="checkbox" /></td>
                   <td className="name-column">
-                    <img src={member.image} alt={member.name} className="profile-img" />
+                    <Avatar src={ian} alt="User" sx={{ width: 25, height: 25 }} />
                     {member.name}
                   </td>
                   <td>{member.activity}</td>
@@ -149,15 +146,14 @@ const MembersTable: React.FC = () => {
                     {member.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className={`badge ${
-                          tag === "+2"
+                        className={`badge ${tag === "+2"
                             ? "badge-gray"
                             : i % 3 === 0
-                            ? "badge-purple"
-                            : i % 3 === 1
-                            ? "badge-red"
-                            : "badge-green"
-                        }`}
+                              ? "badge-purple"
+                              : i % 3 === 1
+                                ? "badge-red"
+                                : "badge-green"
+                          }`}
                       >
                         {tag}
                       </span>

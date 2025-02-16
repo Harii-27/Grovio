@@ -4,8 +4,8 @@ import sizeConfigs from "../../configs/sizeConfigs";
 import appRoutes from "../../routes/appRoutes";
 import SidebarItem from "./SidebarItem";
 import SidebarItemCollapse from "./SidebarItemCollapse";
-import logo from "../../assets/images/logo.jpg"; // ✅ Import logo
-import profile from "../../assets/images/profile.jpg"; // ✅ Import profile image
+import logo from "../../assets/images/logo.jpg";
+import profile from "../../assets/images/profile.jpg";
 
 const Sidebar = () => {
   return (
@@ -22,14 +22,13 @@ const Sidebar = () => {
           color: "black",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between", // ✅ Push profile section to bottom
+          justifyContent: "space-between",
           height: "100vh",
         },
       }}
     >
       <Box>
         <List disablePadding>
-          {/* Colored Dots + Copy Icon + Arrows */}
           <Box
             sx={{
               display: "flex",
@@ -56,12 +55,8 @@ const Sidebar = () => {
           {/* Sidebar Header with Logo */}
           <Toolbar sx={{ marginBottom: "20px" }}>
             <Stack sx={{ width: "100%", display: "flex", alignItems: "center", flexDirection: "row", gap: "10px" }}>
-              {/* Logo Image */}
-              {/* Logo Image */}
               <img src={logo} alt="Logo" style={{ width: "50px", height: "50px", borderRadius: "8px" }} />
 
-
-              {/* Grovio Text */}
               <Typography variant="h6" fontWeight="bold">
                 Grovio
               </Typography>
@@ -94,10 +89,8 @@ const Sidebar = () => {
           backgroundColor: "#fff",
         }}
       >
-        {/* Profile Avatar */}
         <Avatar src={profile} alt="User" sx={{ width: 40, height: 40 }} />
 
-        {/* User Details */}
         <Box>
           <Typography variant="body2" fontWeight="bold">
             Jack Finnigan
@@ -107,7 +100,6 @@ const Sidebar = () => {
           </Typography>
         </Box>
 
-        {/* Open Profile Icon */}
         <IconButton size="small">
           <ChevronRight fontSize="small" />
         </IconButton>

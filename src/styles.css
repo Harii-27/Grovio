@@ -19,9 +19,8 @@ body {
     border: 0.5px solid #ddd;
 }
 
-/* Scrollable Table Wrapper */
 .table-wrapper {
-    max-height: 500px; /* Adjusted height for better scrolling */
+    max-height: 500px;
     overflow-x: auto;
     overflow-y: auto;
     border-radius: 22px;
@@ -33,19 +32,19 @@ table {
     width: 100%;
     border-collapse: collapse;
     background: white;
-    white-space: nowrap; /* Prevents text wrapping */
+    white-space: nowrap;
 }
 
 /* Sticky Header */
 thead {
-    background: #fff ;
+    background: #fff;
     position: sticky;
     top: 0;
     z-index: 2;
 }
 
 thead th {
-    padding: 10px 12px; /* Reduced padding */
+    padding: 10px 12px;
     text-align: left;
     font-weight: bold;
     color: #333;
@@ -57,7 +56,7 @@ thead th {
 }
 
 thead th::after {
-    content: " ▼"; /* Down arrow */
+    content: " ▼";
     font-size: 12px;
     color: #777;
     margin-left: 5px;
@@ -74,10 +73,10 @@ tbody tr:hover {
 }
 
 td {
-    padding: 10px 12px; /* Reduced padding */
+    padding: 10px 12px;
     color: #555;
     text-align: left;
-    font-size: 14px; /* Reduced font size */
+    font-size: 14px;
 }
 
 /* Checkbox */
@@ -95,7 +94,7 @@ input[type="checkbox"] {
 }
 
 .profile-img {
-    width: 28px;  /* Adjusted profile image size */
+    width: 28px;
     height: 28px;
     border-radius: 50%;
 }
@@ -103,9 +102,9 @@ input[type="checkbox"] {
 /* Badge Styles */
 .badge {
     display: inline-block;
-    padding: 3px 8px; /* Reduced padding */
+    padding: 3px 8px;
     border-radius: 10px;
-    font-size: 12px; /* Reduced font size */
+    font-size: 12px;
     font-weight: 500;
     text-align: center;
     margin: 2px;
@@ -167,7 +166,7 @@ input[type="checkbox"] {
     transition: background 0.2s ease-in-out;
 }
 
-/* Checkbox Styling */
+
 .rows-per-page ul li input[type="checkbox"] {
     margin-right: 8px;
     appearance: none;
@@ -179,7 +178,6 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-/* Checkbox Checked State */
 .rows-per-page ul li input[type="checkbox"]:checked {
     background-color: #7a5af8;
     border: 2px solid #7a5af8;
@@ -195,18 +193,16 @@ input[type="checkbox"] {
     color: white;
 }
 
-/* Hover Effect */
 .rows-per-page ul li:hover {
     background: #f3ebff;
 }
 
-/* Active Selection */
+
 .rows-per-page ul li.active {
     background: #e6d6ff;
     font-weight: bold;
 }
 
-/* Pagination */
 .pagination-container {
     display: flex;
     justify-content: flex-end;
@@ -247,12 +243,13 @@ input[type="checkbox"] {
     border-color: #ccc;
     cursor: not-allowed;
 }
+
 .top-buttons {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
-    justify-content: space-between; /* Ensures spacing between buttons */
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -262,7 +259,7 @@ input[type="checkbox"] {
     gap: 10px;
     margin-bottom: 10px;
     width: 100%;
-    border-bottom: 0.5px solid #ddd; 
+    border-bottom: 0.5px solid #ddd;
     padding-bottom: 10px;
 }
 
@@ -270,7 +267,7 @@ input[type="checkbox"] {
 /* Button styles */
 .btn {
     background: #f5f5f5;
-    border: 1px solid #aaa; 
+    border: 1px solid #aaa;
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
@@ -279,7 +276,7 @@ input[type="checkbox"] {
     gap: 5px;
 }
 
-/* Individual button styles */
+
 .actions-btn {
     background: #ffffff;
     border: 0.5px solid #ddd;
@@ -290,29 +287,39 @@ input[type="checkbox"] {
     border: 0.5px solid #ddd;
 
 }
+
 .add-filter-btn,
 .industry-btn {
     background: #ffffff;
     border: 0.5px solid #ddd;
 }
-.filter-btn{
-    color: #6a5acd; 
+
+.filter-btn {
+    color: #6a5acd;
     background: #ffffff;
     border: 0.5px solid #ddd;
 
 }
 
-.hide-fields-btn , saved-btn{
+.hide-fields-btn,
+saved-btn {
     background: #ffffff;
-    margin-left: auto; /* Push to right */
+    margin-left: auto;
     border: 0.5px solid #ddd;
 }
+
 .saved-btn {
     background: #ffffff;
     margin-left: auto;
     border: 0.5px solid #ddd;
-  }
+}
+
 /* Main Container */
+
+.members-container {
+    margin-top: -20px;
+}
+
 .members-filter-container {
     display: flex;
     justify-content: space-between;
@@ -323,25 +330,25 @@ input[type="checkbox"] {
     padding: 10px;
     width: 100%;
     height: 55px;
-  }
-  
-  /* "Members" text aligned to the left */
-  .members-text {
+}
+
+
+.members-text {
     font-size: 16px;
     font-weight: 500;
     color: #333;
     font-weight: bold;
-  }
-  
-  /* Right Section: Contains filter, WhatsApp, and download button */
-  .filter-buttons {
+}
+
+
+.filter-buttons {
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between items */
-  }
-  
-  /* Last 12 Days Filter */
-  .filter-dropdown {
+    gap: 10px;
+}
+
+
+.filter-dropdown {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -349,15 +356,14 @@ input[type="checkbox"] {
     border: 0.5px solid #e0e0e0;
     border-radius: 8px;
     cursor: pointer;
-  }
-  
-  /* Calendar Icon */
-  .filter-icon {
+}
+
+.filter-icon {
     color: #ddd;
-  }
-  
-  /* WhatsApp Button */
-  .whatsapp-button {
+}
+
+
+.whatsapp-button {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -365,67 +371,61 @@ input[type="checkbox"] {
     padding: 8px 12px;
     border: 0.5px solid #ddd;
     border-radius: 8px;
-  }
-  
-  /* Make only the WhatsApp icon green */
-  .whatsapp-icon {
-    color: #008000; /* Green color */
+}
+
+
+.whatsapp-icon {
+    color: #008000;
     font-size: 20px;
-  }
-  
-  
-  /* WhatsApp Icon */
-  .whatsapp-icon {
+}
+
+
+
+.whatsapp-icon {
     font-size: 16px;
-  }
-  
-  /* Close Icon */
-  .icon {
+}
+
+.icon {
     color: #ddd;
     cursor: pointer;
-  }
-  
-  /* Download Button */
-  .download-button {
+}
+
+
+.download-button {
     padding: 8px;
     border: 0.5px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
     cursor: pointer;
-    color:#ddd;
-  }
- /* Breadcrumb Container */
- .breadcrumb {
-    display: flex;
-    align-items: center; /* Keeps elements in a single line */
-    gap: 5px; /* Adjust spacing */
-    font-size: 14px;
-    white-space: nowrap; /* Prevents text from wrapping */
-    position: relative;
-    top: -8px; /* Moves the breadcrumb slightly up */
+    color: #ddd;
 }
 
-  
-  /* Clock Icon Styling */
-  .breadcrumb-icon {
-    color: #6b7280; /* Gray color */
-    font-size: 16px;
-  }
-  
-  /* Analytics (Gray) */
-  .analytics-text {
-    color: #6b7280; /* Gray color */
-  }
-  
-  /* Separator (Arrow) */
-  .breadcrumb-separator {
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    position: relative;
+    top: -8px;
+}
+
+.breadcrumb-icon {
     color: #6b7280;
-  }
-  
-  /* Members (Black) */
-  .members-text {
-    color: #000000; /* Black color */
+    font-size: 16px;
+}
+
+.analytics-text {
+    color: #6b7280;
+}
+
+
+.breadcrumb-separator {
+    color: #6b7280;
+}
+
+
+.members-text {
+    color: #000000;
     font-weight: bold;
-  }
-  
-  
+}
