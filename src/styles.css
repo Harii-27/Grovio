@@ -37,6 +37,7 @@ body {
     border-bottom: 2px solid #ddd;
     cursor: pointer;
     position: relative;
+    transition: background 0.2s ease;
   }
   
   thead th::after {

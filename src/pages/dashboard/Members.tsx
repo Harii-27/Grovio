@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import "../../styles.css";
 
-const sampleMembers = [
+type Member = {
+  name: string;
+  image: string;
+  activity: string;
+  lastActive: string;
+  location: string;
+  primaryMail: string;
+  tags: string[];
+};
+
+const sampleMembers: Member[] = [
   {
     name: "Ian Dooley",
-    image: "https://randomuser.me/api/portraits/men/10.jpg", // Sample image URL
+    image: "https://randomuser.me/api/portraits/men/10.jpg",
     activity: "Active",
     lastActive: "5th May",
     location: "New York, USA",
@@ -12,30 +22,52 @@ const sampleMembers = [
     tags: ["Badge", "VIP"],
   },
   {
-    name: "Ian Dooley",
+    name: "John Smith",
     image: "https://randomuser.me/api/portraits/men/20.jpg",
     activity: "Idle",
     lastActive: "Today",
     location: "London, UK",
-    primaryMail: "someone@grovio.xyz",
+    primaryMail: "john.smith@example.com",
     tags: ["Badge", "Member"],
   },
   {
-    name: "Ian Dooley",
+    name: "Michael Doe",
     image: "https://randomuser.me/api/portraits/men/30.jpg",
     activity: "Offline",
     lastActive: "Yesterday",
     location: "Berlin, Germany",
-    primaryMail: "someone@grovio.xyz",
+    primaryMail: "michael.doe@example.com",
     tags: ["Premium", "Subscribed"],
   },
 ];
 
 const MembersTable: React.FC = () => {
-  const [rowsPerPage, setRowsPerPage] = useState(25);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [members, setMembers] = useState<Member[]>(sampleMembers);
+  const [sortColumn, setSortColumn] = useState<keyof Member | null>(null);
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
-  const totalPages = Math.ceil(sampleMembers.length / rowsPerPage);
+  const handleSort = (column: keyof Member) => {
+    const isAsc = sortColumn === column && sortOrder === "asc";
+    const newOrder = isAsc ? "desc" : "asc";
+
+    const sortedData = [...members].sort((a, b) => {
+      const aValue = a[column].toString().toLowerCase();
+      const bValue = b[column].toString().toLowerCase();
+      return newOrder === "asc"
+        ? aValue.localeCompare(bValue)
+        : bValue.localeCompare(aValue);
+    });
+
+    setSortColumn(column);
+    setSortOrder(newOrder);
+    setMembers(sortedData);
+  };
+
+  const getSortIcon = (column: keyof Member) => {
+    if (sortColumn === column) {
+      return sortOrder === "asc" ? " ▲" : " ▼";
+    }
+  };
 
   return (
     <div className="table-container">
@@ -46,16 +78,16 @@ const MembersTable: React.FC = () => {
             <th>
               <input type="checkbox" />
             </th>
-            <th>Name ▼</th>
-            <th>Activity ▼</th>
-            <th>Last Active ▼</th>
-            <th>Location ▼</th>
-            <th>Primary Email ▼</th>
-            <th>Tags ▼</th>
+            <th onClick={() => handleSort("name")}>Name {getSortIcon("name")}</th>
+            <th onClick={() => handleSort("activity")}>Activity {getSortIcon("activity")}</th>
+            <th onClick={() => handleSort("lastActive")}>Last Active {getSortIcon("lastActive")}</th>
+            <th onClick={() => handleSort("location")}>Location {getSortIcon("location")}</th>
+            <th onClick={() => handleSort("primaryMail")}>Primary Email {getSortIcon("primaryMail")}</th>
+            <th>Tags</th>
           </tr>
         </thead>
         <tbody>
-          {sampleMembers.map((member, index) => (
+          {members.map((member, index) => (
             <tr key={index}>
               <td>
                 <input type="checkbox" />
@@ -93,24 +125,6 @@ const MembersTable: React.FC = () => {
           ))}
         </tbody>
       </table>
-
-      {/* Pagination */}
-      <div className="pagination">
-        <div>
-          <label>Rows per page:</label>
-          <select value={rowsPerPage} onChange={(e) => setRowsPerPage(Number(e.target.value))}>
-            <option value={10}>10</option>
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-          </select>
-        </div>
-        <div>
-          <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}>Prev</button>
-          <span>Page {currentPage} of {totalPages}</span>
-          <button onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}>Next</button>
-        </div>
-      </div>
     </div>
   );
 };
