@@ -1,9 +1,11 @@
-import { Drawer, List, Stack, Toolbar, Typography, Box, IconButton } from "@mui/material";
-import { ContentCopy, ChevronLeft, ChevronRight } from "@mui/icons-material"; // ✅ Import icons
+import { Drawer, List, Stack, Toolbar, Typography, Box, IconButton, Avatar } from "@mui/material";
+import { ContentCopy, ChevronLeft, ChevronRight } from "@mui/icons-material";
 import sizeConfigs from "../../configs/sizeConfigs";
 import appRoutes from "../../routes/appRoutes";
 import SidebarItem from "./SidebarItem";
-import SidebarItemCollapse from "./SidebarItemCollapse"; // ✅ Bring back SidebarItemCollapse
+import SidebarItemCollapse from "./SidebarItemCollapse";
+import logo from "../../assets/images/logo.jpg"; // ✅ Import logo
+import profile from "../../assets/images/profile.jpg"; // ✅ Import profile image
 
 const Sidebar = () => {
   return (
@@ -18,61 +20,98 @@ const Sidebar = () => {
           borderRight: "0px",
           backgroundColor: "#FFFFFF",
           color: "black",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between", // ✅ Push profile section to bottom
+          height: "100vh",
         },
       }}
     >
-      <List disablePadding>
-        {/* Colored Dots + Copy Icon + Arrows */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "10px 15px",
-            justifyContent: "flex-start", // Moves everything left
-          }}
-        >
-          {/* Colored Dots */}
-          <Box sx={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "orange" }} />
-          <Box sx={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "yellow" }} />
-          <Box sx={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "green" }} />
+      <Box>
+        <List disablePadding>
+          {/* Colored Dots + Copy Icon + Arrows */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "10px 15px",
+              justifyContent: "flex-start",
+            }}
+          >
+            <Box sx={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "red" }} />
+            <Box sx={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "orange" }} />
+            <Box sx={{ width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "lightgreen" }} />
+            <IconButton size="small">
+              <ContentCopy fontSize="small" />
+            </IconButton>
+            <IconButton size="small">
+              <ChevronLeft fontSize="small" />
+            </IconButton>
+            <IconButton size="small">
+              <ChevronRight fontSize="small" />
+            </IconButton>
+          </Box>
 
-          {/* Copy Icon */}
-          <IconButton size="small">
-            <ContentCopy fontSize="small" />
-          </IconButton>
+          {/* Sidebar Header with Logo */}
+          <Toolbar sx={{ marginBottom: "20px" }}>
+            <Stack sx={{ width: "100%", display: "flex", alignItems: "center", flexDirection: "row", gap: "10px" }}>
+              {/* Logo Image */}
+              {/* Logo Image */}
+              <img src={logo} alt="Logo" style={{ width: "50px", height: "50px", borderRadius: "8px" }} />
 
-          {/* Left Arrow */}
-          <IconButton size="small">
-            <ChevronLeft fontSize="small" />
-          </IconButton>
 
-          {/* Right Arrow */}
-          <IconButton size="small">
-            <ChevronRight fontSize="small" />
-          </IconButton>
+              {/* Grovio Text */}
+              <Typography variant="h6" fontWeight="bold">
+                Grovio
+              </Typography>
+            </Stack>
+          </Toolbar>
+
+          {/* Sidebar Items */}
+          {appRoutes.map((route, index) =>
+            route.sidebarProps ? (
+              route.child ? (
+                <SidebarItemCollapse item={route} key={index} />
+              ) : (
+                <SidebarItem item={route} key={index} />
+              )
+            ) : null
+          )}
+        </List>
+      </Box>
+
+      {/* ✅ Bottom Profile Section */}
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          padding: "12px",
+          borderRadius: "12px",
+          margin: "10px",
+          border: "1px solid #ddd",
+          backgroundColor: "#fff",
+        }}
+      >
+        {/* Profile Avatar */}
+        <Avatar src={profile} alt="User" sx={{ width: 40, height: 40 }} />
+
+        {/* User Details */}
+        <Box>
+          <Typography variant="body2" fontWeight="bold">
+            Jack Finnigan
+          </Typography>
+          <Typography variant="caption" color="text.secondary">
+            jackfinnigan@grovio.xyz
+          </Typography>
         </Box>
 
-        {/* Sidebar Header */}
-        <Toolbar sx={{ marginBottom: "20px" }}>
-          <Stack sx={{ width: "100%" }} direction="row" justifyContent="center">
-            <Typography variant="h6" fontWeight="bold">
-              Grovio
-            </Typography>
-          </Stack>
-        </Toolbar>
-
-        {/* Sidebar Items */}
-        {appRoutes.map((route, index) =>
-          route.sidebarProps ? (
-            route.child ? (
-              <SidebarItemCollapse item={route} key={index} /> // ✅ Use SidebarItemCollapse for dropdown
-            ) : (
-              <SidebarItem item={route} key={index} />
-            )
-          ) : null
-        )}
-      </List>
+        {/* Open Profile Icon */}
+        <IconButton size="small">
+          <ChevronRight fontSize="small" />
+        </IconButton>
+      </Box>
     </Drawer>
   );
 };
