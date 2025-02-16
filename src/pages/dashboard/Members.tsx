@@ -4,6 +4,7 @@ import "../../styles.css";
 const sampleMembers = [
   {
     name: "Ian Dooley",
+    image: "https://randomuser.me/api/portraits/men/10.jpg", // Sample image URL
     activity: "Active",
     lastActive: "5th May",
     location: "New York, USA",
@@ -12,6 +13,7 @@ const sampleMembers = [
   },
   {
     name: "Ian Dooley",
+    image: "https://randomuser.me/api/portraits/men/20.jpg",
     activity: "Idle",
     lastActive: "Today",
     location: "London, UK",
@@ -20,6 +22,7 @@ const sampleMembers = [
   },
   {
     name: "Ian Dooley",
+    image: "https://randomuser.me/api/portraits/men/30.jpg",
     activity: "Offline",
     lastActive: "Yesterday",
     location: "Berlin, Germany",
@@ -43,12 +46,12 @@ const MembersTable: React.FC = () => {
             <th>
               <input type="checkbox" />
             </th>
-            <th>Name</th>
-            <th>Activity</th>
-            <th>Last Active</th>
-            <th>Location</th>
-            <th>Primary Email</th>
-            <th>Tags</th>
+            <th>Name ▼</th>
+            <th>Activity ▼</th>
+            <th>Last Active ▼</th>
+            <th>Location ▼</th>
+            <th>Primary Email ▼</th>
+            <th>Tags ▼</th>
           </tr>
         </thead>
         <tbody>
@@ -57,7 +60,10 @@ const MembersTable: React.FC = () => {
               <td>
                 <input type="checkbox" />
               </td>
-              <td>{member.name}</td>
+              <td className="name-column">
+                <img src={member.image} alt={member.name} className="profile-img" />
+                {member.name}
+              </td>
               <td>
                 <span
                   className={
