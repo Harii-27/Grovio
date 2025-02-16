@@ -85,32 +85,40 @@ body {
   /* Badge Styles */
   .badge {
     display: inline-block;
-    padding: 5px 10px;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 12px;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin: 2px;
+    border: 1px solid;
   }
   
-  .badge-blue {
-    background: #e7f3ff;
-    color: #007bff;
+  .badge-purple {
+    color: #7d5fff;
+    border-color: #7d5fff;
+    background-color: rgba(125, 95, 255, 0.1);
   }
   
   .badge-red {
-    background: #fde8e8;
-    color: #ff4d4f;
+    color: #FF9A9A;  /* Light Red */
+    border-color: #FF9A9A;
+    background-color: rgba(255, 154, 154, 0.1);
   }
   
+  
   .badge-green {
-    background: #e6ffed;
-    color: #28a745;
+    color: #50E3C2;
+    color: #50E3C2;
+    background-color: rgba(80, 227, 194, 0.1);
   }
+  
 /* Dropdown Container */
 .rows-per-page {
     position: relative;
     cursor: pointer;
     padding: 5px 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #d1d5db; /* Light gray border */
     border-radius: 5px;
     background: white;
     margin-right: 15px;
@@ -182,31 +190,45 @@ body {
     font-weight: bold;
   }
   
-  /* Pagination */
   .pagination-container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     margin-top: 10px;
+    gap: 10px;
   }
   
   .pagination {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+  }
+  
+  .pagination span {
+    font-size: 14px;
+    color: #555;
   }
   
   .pagination button {
-    border: none;
-    background: #007bff;
-    color: white;
-    padding: 5px 10px;
+    border: 1px solid #d1d5db; /* Light gray border */
+    background: none;
+    color: #555;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 3px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .pagination button:hover {
+    border-color: #6a5acd; /* Soft purple border */
+    color: #6a5acd;
   }
   
   .pagination button:disabled {
-    background: #ccc;
+    color: #ccc;
+    border-color: #ccc;
     cursor: not-allowed;
   }
+  
   
