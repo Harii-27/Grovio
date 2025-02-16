@@ -1,14 +1,5 @@
 import DashboardPageLayout from "../pages/dashboard/DashboardPageLayout";
 import { RouteType } from "./config";
-import DashboardIndex from "../pages/dashboard/DashboardIndex";
-import ChangelogPage from "../pages/changelog/ChangelogPage";
-import AnalyticsPage from "../pages/dashboard/AnalyticsPage";
-import SaasPage from "../pages/dashboard/SaasPage";
-import ComponentPageLayout from "../pages/component/ComponentPageLayout";
-import InstallationPage from "../pages/installation/InstallationPage";
-import DocumentationPage from "../pages/documentation/DocumentationPage";
-
-// Importing matching icons
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
@@ -16,12 +7,18 @@ import CampaignOutlinedIcon from "@mui/icons-material/CampaignOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import MembersTable from "../pages/dashboard/Members";
+import HomePage from "../pages/Home/HomePage";
+import CampaignPage from "../pages/Campagin/CampaignPage";
+import MessagePage from "../pages/dashboard/MessagePage";
+import CommunitiesPage from "../pages/dashboard/Communities";
+import TopicsPage from "../pages/dashboard/TopicsPage";
+import NotificationPage from "../pages/notification/NotificationPage";
 
 const appRoutes: RouteType[] = [
   {
-    path: "/installation",
-    element: <InstallationPage />,
-    state: "installation",
+    path: "/home",
+    element: <HomePage />,
+    state: "home",
     sidebarProps: {
       displayText: "Home",
       icon: <HomeOutlinedIcon />
@@ -36,11 +33,7 @@ const appRoutes: RouteType[] = [
       icon: <AccessTimeOutlinedIcon />
     },
     child: [
-      {
-        index: true,
-        element: <DashboardIndex />,
-        state: "dashboard.index"
-      },
+
       {
         path: "/dashboard/members",
         element: <MembersTable/>,
@@ -48,17 +41,17 @@ const appRoutes: RouteType[] = [
         sidebarProps: { displayText: "Members" }
       },
       {
-        path: "/dashboard/analytics",
-        element: <AnalyticsPage />,
-        state: "dashboard.analytics",
+        path: "/dashboard/messages",
+        element: <MessagePage />,
+        state: "dashboard.messages",
         sidebarProps: {
           displayText: "Messages"
         }
       },
       {
-        path: "/dashboard/saas",
-        element: <SaasPage />,
-        state: "dashboard.saas",
+        path: "/dashboard/topics",
+        element: <TopicsPage />,
+        state: "dashboard.topics",
         sidebarProps: {
           displayText: "Topics"
         }
@@ -66,26 +59,26 @@ const appRoutes: RouteType[] = [
     ]
   },
   {
-    path: "/component",
-    element: <ComponentPageLayout />,
-    state: "component",
+    path: "/communities",
+    element: <CommunitiesPage/>,
+    state: "communities",
     sidebarProps: {
       displayText: "Communities",
       icon: <GroupsOutlinedIcon />
     }
   },
   {
-    path: "/documentation",
-    element: <DocumentationPage />,
-    state: "documentation",
+    path: "/campaign",
+    element: <CampaignPage />,
+    state: "campaign",
     sidebarProps: {
       displayText: "Campaigns",
       icon: <CampaignOutlinedIcon />
     }
   },
   {
-    path: "/changelog",
-    element: <ChangelogPage />,
+    path: "/notification",
+    element: <NotificationPage />,
     state: "changelog",
     sidebarProps: {
       displayText: "Notifications",
@@ -94,7 +87,7 @@ const appRoutes: RouteType[] = [
   },
   {
     path: "/settings",
-    element: <ChangelogPage />,
+    element: <NotificationPage />,
     state: "settings",
     sidebarProps: {
       displayText: "Settings",
