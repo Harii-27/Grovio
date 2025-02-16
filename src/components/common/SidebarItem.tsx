@@ -33,7 +33,7 @@ const SidebarItem = ({ item, isChild = false }: Props) => {
               sx={{
                 width: 6,
                 height: 6,
-                backgroundColor: "#33006F",
+                backgroundColor: "#7a5af8",
                 borderRadius: "50%"
               }}
             />

@@ -11,63 +11,44 @@ type Member = {
   tags: string[];
 };
 
-const sampleMembers: Member[] = [
-  {
-    name: "Ian Dooley",
-    image: "https://randomuser.me/api/portraits/men/10.jpg",
-    activity: "Active",
-    lastActive: "5th May",
-    location: "New York, USA",
-    primaryMail: "someone@grovio.xyz",
-    tags: ["Badge", "VIP"],
-  },
-  {
-    name: "John Smith",
-    image: "https://randomuser.me/api/portraits/men/20.jpg",
-    activity: "Idle",
-    lastActive: "Today",
-    location: "London, UK",
-    primaryMail: "john.smith@example.com",
-    tags: ["Badge", "Member"],
-  },
-  {
-    name: "Michael Doe",
-    image: "https://randomuser.me/api/portraits/men/30.jpg",
-    activity: "Offline",
-    lastActive: "Yesterday",
-    location: "Berlin, Germany",
-    primaryMail: "michael.doe@example.com",
-    tags: ["Premium", "Subscribed"],
-  },
-];
+// Sample data
+const ianDooley: Member = {
+  name: "Ian Dooley",
+  image: "https://randomuser.me/api/portraits/men/10.jpg",
+  activity: "Active",
+  lastActive: "5th May",
+  location: "New York, USA",
+  primaryMail: "someone@grovio.xyz",
+  tags: ["Badge", "VIP"],
+};
+const sampleMembers: Member[] = Array(4585).fill(ianDooley);
 
 const MembersTable: React.FC = () => {
-  const [members, setMembers] = useState<Member[]>(sampleMembers);
+  const [members] = useState<Member[]>(sampleMembers);
   const [sortColumn, setSortColumn] = useState<keyof Member | null>(null);
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(25);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleSort = (column: keyof Member) => {
     const isAsc = sortColumn === column && sortOrder === "asc";
-    const newOrder = isAsc ? "desc" : "asc";
-
-    const sortedData = [...members].sort((a, b) => {
-      const aValue = a[column].toString().toLowerCase();
-      const bValue = b[column].toString().toLowerCase();
-      return newOrder === "asc"
-        ? aValue.localeCompare(bValue)
-        : bValue.localeCompare(aValue);
-    });
-
     setSortColumn(column);
-    setSortOrder(newOrder);
-    setMembers(sortedData);
+    setSortOrder(isAsc ? "desc" : "asc");
   };
 
   const getSortIcon = (column: keyof Member) => {
     if (sortColumn === column) {
       return sortOrder === "asc" ? " ▲" : " ▼";
     }
+    return " ↕";
   };
+
+  // Pagination Logic
+  const indexOfLastRow = currentPage * rowsPerPage;
+  const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  const currentRows = members.slice(indexOfFirstRow, indexOfLastRow);
+  const totalPages = Math.ceil(members.length / rowsPerPage);
 
   return (
     <div className="table-container">
@@ -87,7 +68,7 @@ const MembersTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {members.map((member, index) => (
+          {currentRows.map((member, index) => (
             <tr key={index}>
               <td>
                 <input type="checkbox" />
@@ -97,17 +78,7 @@ const MembersTable: React.FC = () => {
                 {member.name}
               </td>
               <td>
-                <span
-                  className={
-                    member.activity === "Active"
-                      ? "badge badge-green"
-                      : member.activity === "Idle"
-                      ? "badge badge-blue"
-                      : "badge badge-red"
-                  }
-                >
-                  {member.activity}
-                </span>
+                <span className="badge badge-green">{member.activity}</span>
               </td>
               <td>{member.lastActive}</td>
               <td>{member.location}</td>
@@ -125,6 +96,54 @@ const MembersTable: React.FC = () => {
           ))}
         </tbody>
       </table>
+
+      {/* Pagination & Rows per Page */}
+      <div className="pagination-container">
+        <div className="rows-per-page">
+          <span onClick={() => setShowDropdown(!showDropdown)}>
+            {rowsPerPage} per page ▼
+          </span>
+          {showDropdown && (
+            <ul className="dropdown">
+              {[10, 25, 50, 100].map((num) => (
+                <li
+                  key={num}
+                  className={num === rowsPerPage ? "active" : ""}
+                  onClick={() => {
+                    setRowsPerPage(num);
+                    setShowDropdown(false);
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={num === rowsPerPage}
+                    readOnly
+                  />
+                  {num} per page
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div className="pagination">
+          <span>
+            {indexOfFirstRow + 1}-{Math.min(indexOfLastRow, members.length)} of {members.length}
+          </span>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
+          >
+            ◀
+          </button>
+          <button
+            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            disabled={currentPage === totalPages}
+          >
+            ▶
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
