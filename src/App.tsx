@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import { routes } from "./routes";
+import "./styles.css";
 
 function App() {
   return (

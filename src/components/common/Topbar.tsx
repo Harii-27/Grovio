@@ -1,4 +1,5 @@
-import { AppBar, Toolbar, TextField, Box } from "@mui/material";
+import { AppBar, Toolbar, TextField, Box, IconButton, InputAdornment } from "@mui/material";
+import { Upload, Download, Add, ContentCopy, Refresh, LockOutlined } from "@mui/icons-material";
 import sizeConfigs from "../../configs/sizeConfigs";
 
 const Topbar = () => {
@@ -9,32 +10,78 @@ const Topbar = () => {
         width: `calc(100% - ${sizeConfigs.sidebar.width})`,
         ml: sizeConfigs.sidebar.width,
         boxShadow: "unset",
-        backgroundColor: "white", // White background
-        color: "black", // Black text color
+        backgroundColor: "white",
+        color: "black",
+        height: "44px",
         display: "flex",
         justifyContent: "center",
-        height: "44px", // Reduced height
       }}
     >
-      <Toolbar sx={{ width: "100%", display: "flex", justifyContent: "center", minHeight: "44px" }}>
-        <Box sx={{ width: "50%", transform: "translateX(-180px)" }}> 
+      <Toolbar
+        sx={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          minHeight: "44px",
+          paddingX: "10px",
+        }}
+      >
+        {/* Centered Search Bar with Lock and Refresh Icon */}
+        <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}>
           <TextField
-            fullWidth
             variant="outlined"
-            defaultValue="grovio.xyz"
+            sx={{ width: "500px", textAlign: "center" }} // Decreased width for better centering
             InputProps={{
+              startAdornment: (
+                <InputAdornment position="start" sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                  <LockOutlined fontSize="small" />
+                  <Box sx={{ fontSize: "14px", fontWeight: "bold", transform: "translateY(1px)" }}>
+                    grovio.xyz
+                  </Box>
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton size="small">
+                    <Refresh fontSize="small" />
+                  </IconButton>
+                </InputAdornment>
+              ),
               sx: {
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 textAlign: "center",
                 fontWeight: "bold",
                 backgroundColor: "transparent",
-                borderRadius: "8px",
+                border: "0.5px solid #ddd",
+                borderRadius: "10px",
                 "& .MuiOutlinedInput-input": {
                   textAlign: "center",
-                  padding: "6px", // Reduce padding for a smaller height
+                  padding: "6px",
+                  fontSize: "14px",
                 },
+                "& fieldset": { border: "none" },
               },
             }}
           />
+        </Box>
+
+        {/* Right-Side Icons */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <IconButton size="small">
+            <Upload fontSize="small" />
+          </IconButton>
+          <IconButton size="small">
+            <Download fontSize="small" />
+          </IconButton>
+          <IconButton size="small">
+            <Add fontSize="small" />
+          </IconButton>
+          <IconButton size="small">
+            <ContentCopy fontSize="small" />
+          </IconButton>
         </Box>
       </Toolbar>
     </AppBar>
