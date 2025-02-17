@@ -42,8 +42,8 @@ const Sidebar = () => {
           "& .MuiDrawer-paper": {
             width: sizeConfigs.sidebar.width,
             boxSizing: "border-box",
-            borderRight: "0px",
-            backgroundColor: "#FFFFFF",
+            borderRight: "0.5px solid #ddd", 
+             backgroundColor: "#FFFFFF",
             color: "black",
             display: "flex",
             flexDirection: "column",
