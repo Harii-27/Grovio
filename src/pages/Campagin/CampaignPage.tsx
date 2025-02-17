@@ -4,7 +4,7 @@ type Props = {};
 
 const CampaignPage = (props: Props) => {
   return (
-    <div>Campaign Page</div>
+    <div>Campaign Page, Pls see the Members Page </div>
   );
 };
 

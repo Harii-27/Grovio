@@ -4,7 +4,7 @@ type Props = {};
 
 const CommunitiesPage = (props: Props) => {
   return (
-    <div>Communities Page</div>
+    <div>Communities Page, Pls see the Members Page </div>
   );
 };
 
