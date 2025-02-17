@@ -13,6 +13,7 @@ import MessagePage from "../pages/dashboard/MessagePage";
 import CommunitiesPage from "../pages/dashboard/Communities";
 import TopicsPage from "../pages/dashboard/TopicsPage";
 import NotificationPage from "../pages/notification/NotificationPage";
+import SettingPage from "../pages/settings/SettingPage";
 
 const appRoutes: RouteType[] = [
   {
@@ -87,7 +88,7 @@ const appRoutes: RouteType[] = [
   },
   {
     path: "/settings",
-    element: <NotificationPage />,
+    element: <SettingPage />,
     state: "settings",
     sidebarProps: {
       displayText: "Settings",
