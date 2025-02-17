@@ -9,7 +9,7 @@ import { RootState } from "../../redux/store";
 
 type Props = {
   item: RouteType;
-  isChild?: boolean; // ✅ Added to check if it's a child item
+  isChild?: boolean; 
 };
 
 const SidebarItemCollapse = ({ item, isChild = false }: Props) => {
@@ -29,7 +29,7 @@ const SidebarItemCollapse = ({ item, isChild = false }: Props) => {
         onClick={() => setOpen(!open)}
         sx={{
           paddingY: "12px",
-          paddingX: isChild ? "40px" : "24px", // ✅ Indent child items
+          paddingX: isChild ? "40px" : "24px", 
           "&:hover": { backgroundColor: "transparent" },
           "&.Mui-selected": { backgroundColor: "transparent" }
         }}
@@ -55,7 +55,7 @@ const SidebarItemCollapse = ({ item, isChild = false }: Props) => {
         route.child ? (
           <SidebarItemCollapse item={route} key={index} />
         ) : (
-          <SidebarItem item={route} key={index} isChild={true} /> // ✅ Mark as child
+          <SidebarItem item={route} key={index} isChild={true} /> 
         )
       ) : null
     )}
