@@ -1,14 +1,17 @@
 import { AppBar, Toolbar, TextField, Box, IconButton, InputAdornment } from "@mui/material";
 import { Upload, Download, Add, ContentCopy, Refresh, LockOutlined } from "@mui/icons-material";
+import { useMediaQuery } from "@mui/material";
 import sizeConfigs from "../../configs/sizeConfigs";
 
 const Topbar = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <AppBar
       position="fixed"
       sx={{
-        width: `calc(100% - ${sizeConfigs.sidebar.width})`,
-        ml: sizeConfigs.sidebar.width,
+        width: isMobile ? "100%" : `calc(100% - ${sizeConfigs.sidebar.width})`,
+        ml: isMobile ? 0 : sizeConfigs.sidebar.width,
         boxShadow: "unset",
         backgroundColor: "white",
         color: "black",
@@ -27,18 +30,20 @@ const Topbar = () => {
           paddingX: "10px",
         }}
       >
-
         <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "center" }}>
           <TextField
             variant="outlined"
-            sx={{ width: "500px", textAlign: "center", }}
+            sx={{
+              width: isMobile ? "80%" : "500px",
+              textAlign: "center",
+            }}
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start" sx={{ display: "flex", alignItems: "center", gap: "5px", position: "relative", left: "150px" }}>
+                <InputAdornment position="start">
                   <LockOutlined fontSize="small" />
-                  <Box sx={{ fontSize: "14px", fontWeight: "bold", transform: "translateY(1px)" }}>
-                    grovio.xyz
-                  </Box>
+                  {!isMobile && (
+                    <Box sx={{ fontSize: "14px", fontWeight: "bold", marginLeft: "5px" }}>grovio.xyz</Box>
+                  )}
                 </InputAdornment>
               ),
               endAdornment: (
@@ -51,7 +56,6 @@ const Topbar = () => {
               sx: {
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
                 textAlign: "center",
                 fontWeight: "bold",
                 backgroundColor: "transparent",
@@ -69,20 +73,22 @@ const Topbar = () => {
         </Box>
 
         {/* Right-Side Icons */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <IconButton size="small">
-            <Upload fontSize="small" />
-          </IconButton>
-          <IconButton size="small">
-            <Download fontSize="small" />
-          </IconButton>
-          <IconButton size="small">
-            <Add fontSize="small" />
-          </IconButton>
-          <IconButton size="small">
-            <ContentCopy fontSize="small" />
-          </IconButton>
-        </Box>
+        {!isMobile && (
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <IconButton size="small">
+              <Upload fontSize="small" />
+            </IconButton>
+            <IconButton size="small">
+              <Download fontSize="small" />
+            </IconButton>
+            <IconButton size="small">
+              <Add fontSize="small" />
+            </IconButton>
+            <IconButton size="small">
+              <ContentCopy fontSize="small" />
+            </IconButton>
+          </Box>
+        )}
       </Toolbar>
     </AppBar>
   );

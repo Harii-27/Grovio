@@ -128,6 +128,72 @@ input[type="checkbox"] {
     background-color: rgba(80, 227, 194, 0.1);
 }
 
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+    .table-container {
+        width: 95%;
+    }
+
+    thead th {
+        font-size: 13px;
+    }
+
+    td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .name-column {
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .table-container {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .table-wrapper {
+        overflow-x: scroll;
+    }
+
+    table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody {
+        display: block;
+    }
+
+    tbody tr {
+        display: block;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #ddd;
+        padding: 10px;
+    }
+
+    tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .pagination-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
 /* Dropdown Container */
 .rows-per-page {
     position: relative;
