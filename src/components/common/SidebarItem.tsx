@@ -1,13 +1,14 @@
-import { Box, ListItemButton, ListItemIcon, Typography, Stack } from "@mui/material";
+import { Box, ListItemButton, ListItemIcon, Typography, Stack, Badge } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { RouteType } from "../../routes/config";
 
 type Props = {
   item: RouteType;
   isChild?: boolean;
+  notificationCount?: number; 
 };
 
-const SidebarItem = ({ item, isChild = false }: Props) => {
+const SidebarItem = ({ item, isChild = false, notificationCount = 10 }: Props) => {  
   const location = useLocation();
   const isActive = location.pathname === item.path;
 
@@ -18,23 +19,23 @@ const SidebarItem = ({ item, isChild = false }: Props) => {
         to={item.path}
         selected={isActive}
         sx={{
-          backgroundColor: isActive ? "#F0F8FF" : "transparent", 
-          borderRadius: "8px", 
+          backgroundColor: isActive ? "#F0F8FF" : "transparent",
+          borderRadius: "8px",
           paddingY: "12px",
           paddingLeft: isChild ? "35px" : "24px",
-          transition: "background-color 0.3s ease-in-out, border-radius 0.2s ease-in-out", 
+          transition: "background-color 0.3s ease-in-out, border-radius 0.2s ease-in-out",
           "&:hover": {
             backgroundColor: "#F0F8FF",
-            borderRadius: "12px", 
+            borderRadius: "12px",
           },
           "&.Mui-selected": {
             backgroundColor: "#F0F8FF",
             color: "#000",
-            borderRadius: "12px", 
+            borderRadius: "12px",
           },
           "&.Mui-selected:hover": {
-            backgroundColor: "#F0F8FF", 
-            borderRadius: "12px", 
+            backgroundColor: "#F0F8FF",
+            borderRadius: "12px",
           },
         }}
       >
@@ -54,6 +55,23 @@ const SidebarItem = ({ item, isChild = false }: Props) => {
             />
           )}
           <Typography>{item.sidebarProps.displayText}</Typography>
+
+          {item.state === "notification" && (
+            <Badge
+              badgeContent={notificationCount}
+              sx={{
+                marginLeft: "8px",
+                fontSize: "12px",
+                height: "18px",
+                width: "18px",
+                borderRadius: "20px",
+                display: "inline-block",
+                position: "relative",
+                top: "8px",
+                left: "90px",
+              }}
+            />
+          )}
         </Stack>
       </ListItemButton>
     ) : null

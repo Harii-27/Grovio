@@ -39,7 +39,7 @@ const Topbar = () => {
             }}
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start">
+                <InputAdornment position="start" sx={{ display: "flex", alignItems: "center", gap: "5px", position: "relative", left: "150px" }}>
                   <LockOutlined fontSize="small" />
                   {!isMobile && (
                     <Box sx={{ fontSize: "14px", fontWeight: "bold", marginLeft: "5px" }}>grovio.xyz</Box>

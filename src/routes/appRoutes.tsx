@@ -79,7 +79,7 @@ const appRoutes: RouteType[] = [
   {
     path: "/notification",
     element: <NotificationPage />,
-    state: "changelog",
+    state: "notification",
     sidebarProps: {
       displayText: "Notifications",
       icon: <NotificationsOutlinedIcon />
